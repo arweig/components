@@ -1,0 +1,111 @@
+<nav>
+  <ul class="category">
+    <li class="category-header">Getting Started</li>
+    <li><a href="/">Introduction</a></li>
+    <li><a href="/page1">Dark mode</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/page1">Page 1</a></li>
+  </ul>
+
+  <ul class="category">
+    <li class="category-header">Components</li>
+
+    <div class="dropdown">
+      <button class="accordion">Clickables +</button>
+      <div class="panel">
+        <ul>
+          <li><a href="/components/clickables/button">Button</a></li>
+          <li><a href="/page1">Text Link</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="accordion">Flair +</button>
+      <div class="panel">
+        <ul>
+          <li><a href="/components/flair/logo">Logo</a></li>
+          <li><a href="/page1">Text Link</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </ul>
+</nav>
+
+<style>
+  nav {
+    border-right: 1px solid black;
+    grid-area: 2 / 1 / 3 / 2;
+    overflow-y: scroll;
+    padding: 20px 30px;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .category {
+    margin-bottom: 30px;
+  }
+
+  .category-header::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin-top: 10px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .accordion {
+    color: #444;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+    background-color: transparent;
+  }
+
+  .active, .accordion:hover {
+    
+  }
+
+  .panel {
+    display: none;
+    background-color: white;
+    width: fit-content;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .panel:last-of-type {
+    margin-bottom: 10px;
+  }
+</style>
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+</script>

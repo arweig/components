@@ -1,0 +1,130 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Page from '../Page.astro';
+const currentPath = '/components/flair/logo';
+---
+
+<Layout title="Component App">
+	<section id="logo">
+		<div class="container">
+			<header>
+			<Breadcrumbs path={currentPath} />
+			<Page title="Logo" text="Description about the component." />
+		</header>
+			<div class="btn-container">
+				<button id="preview">Preview</button>
+				<button id="code">Code</button>
+			</div>
+			<div class="contents" id="preview-contents">
+				<p>preview</p>
+			</div>
+			<div class="contents" id="code-contents">
+				<button id="copy-code">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-check"><path d="m12 15 2 2 4-4"/><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+				</button>
+				code Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, rem et perspiciatis quia vitae sequi ducimus ullam asperiores modi esse natus atque adipisci perferendis, totam architecto! Temporibus voluptatibus totam consectetur.
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.contents {
+		border: 1px solid rgb(202, 202, 202);
+		border-radius: 4px;
+		padding: 20px;
+	}
+
+	h2 {
+		margin-top: 40px;
+	}
+
+	button {
+		float: right;
+		padding: 5px 5px 2px 5px ;
+		border: 0;
+		display: block;
+		border-radius: 2px;
+		background-color: transparent;
+	}
+
+	button#copy-code:hover {
+		background-color: rgb(236, 236, 236);
+		transition: .2s;
+	}
+
+	button#copy-code.active {
+
+	}
+	
+	/* show by default */
+	#preview-contents {
+    display: flex;
+		align-items: center;
+		justify-content: center;
+  }
+
+ 	/* hide by default */
+  #code-contents {
+    display: none;
+		background-color: rgb(247, 247, 247);
+  }
+
+	.btn-container {
+		border-bottom: 1px solid rgb(202, 202, 202);
+		margin-bottom: 10px;
+		display: flex;
+		gap: 20px;
+		align-items: flex-start;
+	}
+
+  .btn-container button {
+    cursor: pointer;
+		background-color: transparent;
+		border: 0;
+		padding-bottom: 8px;
+  }
+
+  .btn-container button.active {
+    color: rgb(0, 0, 0);
+		border-bottom: 2px solid black;
+  }
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var previewButton = document.getElementById('preview');
+    var codeButton = document.getElementById('code');
+    var previewContents = document.getElementById('preview-contents');
+    var codeContents = document.getElementById('code-contents');
+
+    // function to show preview and hide code
+    function showPreview() {
+      previewContents.style.display = 'flex';
+      codeContents.style.display = 'none';
+      previewButton.classList.add('active');
+      codeButton.classList.remove('active');
+    }
+
+    // function to show code and hide preview
+    function showCode() {
+      codeContents.style.display = 'block';
+      previewContents.style.display = 'none';
+      codeButton.classList.add('active');
+      previewButton.classList.remove('active');
+    }
+
+    // start with preview visible and button active
+    showPreview();
+
+    // event listener for the preview button
+    previewButton.addEventListener('click', showPreview);
+
+    // event listener for the code button
+    codeButton.addEventListener('click', showCode);
+  });
+</script>

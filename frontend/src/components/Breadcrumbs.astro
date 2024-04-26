@@ -1,0 +1,68 @@
+---
+interface Breadcrumb {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  path: string;
+  name?: string;
+}
+
+const generateBreadcrumbs = (path: string, name: string): Breadcrumb[] => {
+  const segments = path.split('/').filter(Boolean);
+  const breadcrumbs: Breadcrumb[] = segments.map((segment, index, array) => {
+    const href = '/' + array.slice(0, index + 1).join('/');
+    let label;
+
+    // Check if it's the last segment and the name prop is provided
+    if (index === array.length - 1 && name) {
+      label = name;
+    } else {
+      label = segment.charAt(0).toUpperCase() + segment.slice(1);
+    }
+
+    return { label, href };
+  });
+
+  breadcrumbs.unshift({ label: 'Home', href: '/' });
+  return breadcrumbs;
+};
+
+const { path, name } = Astro.props as Props;
+const breadcrumbs = generateBreadcrumbs(path, name);
+---
+
+<nav aria-label="Breadcrumb">
+  <h2 class="no-show">Current page</h2>
+  <ol>
+    {breadcrumbs.map((breadcrumb, index) => (
+      <li key={index}>
+        <a href={breadcrumb.href}>{breadcrumb.label}</a>
+        {index < breadcrumbs.length - 1 ? ' > ' : ''}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  ol {
+    display: flex;
+    list-style-type: none;
+    gap: 2px;
+  }
+
+  li {
+    font-size: 14px;
+  }
+
+  li:last-of-type {
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    opacity: .5;
+  }
+</style>
