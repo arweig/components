@@ -1,11 +1,23 @@
-<nav>
-  Component App
+<nav id="main-nav">
+  <p>Component App</p>
   <ul>
-    <li>Link</li>
-    <li>Link</li>
-    <li>Link</li>
-    <li>Link</li>
+    <li class="nav-links"><a href="/">Getting Started</a></li>
+    <li class="nav-links"><a href="/components/button">Components</a></li>
+    <li class="nav-links"><a href="">Link</a></li>
+    <li class="nav-links"><a href="">Link</a></li>
+    <li id="nav-dropdown-toggle"><button>X</a></button>
   </ul>
+
+  <!-- Overlay Menu -->
+  <div id="nav-overlay" style="display: none;">
+    <ul>
+      <li><a href="/">Getting Started</a></li>
+      <li><a href="/components/button">Components</a></li>
+      <li><a href="">Link</a></li>
+      <li><a href="">Link</a></li>
+    </ul>
+  </div>
+
 </nav>
 
 <style>
@@ -15,6 +27,9 @@
     padding: 20px 30px;
     display: flex;
     gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
   }
 
   ul {
@@ -22,4 +37,62 @@
     display: flex;
     gap: 10px;
   }
+
+  button {
+    display: none;
+  }
+
+  #nav-overlay {
+    position: absolute;
+    width: 100%; /* Take the full width of the navbar */
+    display: none; /* Hidden by default */
+    background-color: white;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.05);
+    z-index: 1000; /* High z-index to overlay on top of other content */
+    top: 100%; /* Directly below the navbar */
+    left: 0;
+    padding: 30px;
+  }
+
+  #nav-overlay ul {
+    flex-direction: column; /* Stack links vertically */
+    width: 100%; /* Full width */
+    margin: 0; /* Reset margin */
+    padding: 10px 0; /* Padding on top and bottom */
+  }
+
+  #nav-overlay li {
+    margin-bottom: 10px; /* Space between links */
+  }
+
+  #nav-overlay li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 800px) {
+    .nav-links {
+      display: none;
+    }
+    button {
+      display: block; /* Show button on small screens */
+    }
+  }
 </style>
+
+<script>
+  document.getElementById('nav-dropdown-toggle').onclick = function() {
+    var overlay = document.getElementById('nav-overlay');
+    overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
+  };
+
+  // check the window width and close the dropdown if width is more than 800px
+  function checkWindowSize() {
+    var overlay = document.getElementById('nav-overlay');
+    if (window.innerWidth > 800) {
+      overlay.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('resize', checkWindowSize);
+  checkWindowSize();
+</script>
