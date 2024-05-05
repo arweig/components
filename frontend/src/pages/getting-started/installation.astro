@@ -1,0 +1,25 @@
+---
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Layout from '../../layouts/Layout.astro';
+import Page from '../components/Page.astro';
+const currentPath = '/getting started/installation';
+---
+
+<Layout title="Component App">
+	<section id="installation">
+		<div class="container">
+			<header>
+				<Breadcrumbs path={currentPath} />
+				<Page title="Installation" text="Description about the page." />
+			</header>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+</style>

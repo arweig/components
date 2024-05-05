@@ -1,6 +1,5 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Page from '../Page.astro';
 const currentPath = '/components/flair/logo';
@@ -10,12 +9,12 @@ const currentPath = '/components/flair/logo';
 	<section id="logo">
 		<div class="container">
 			<header>
-			<Breadcrumbs path={currentPath} />
-			<Page title="Logo" text="Description about the component." />
-		</header>
+				<Breadcrumbs path={currentPath} />
+				<Page title="Logo" text="Description about the component." />
+			</header>
 			<div class="btn-container">
-				<button id="preview">Preview</button>
-				<button id="code">Code</button>
+				<button class="filter-btn" id="preview">Preview</button>
+				<button class="filter-btn" id="code">Code</button>
 			</div>
 			<div class="contents" id="preview-contents">
 				<h1><a href="">Logo</a></h1>
@@ -32,35 +31,18 @@ const currentPath = '/components/flair/logo';
 </Layout>
 
 <style>
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
 	.contents {
 		border: 1px solid rgb(202, 202, 202);
 		border-radius: 4px;
 		padding: 20px;
 	}
-
-	h2 {
-		margin-top: 40px;
-	}
 	
-	button {
-		float: right;
-		padding: 5px 5px 2px 5px ;
-		border: 0;
-		display: block;
-		border-radius: 2px;
-		background-color: transparent;
-	}
-
-	button#copy-code:hover {
-		background-color: rgb(236, 236, 236);
-		transition: .2s;
-	}
-
-	button#copy-code.active {
-
-	}
-	
-	/* show by default */
 	#preview-contents {
     display: flex;
 		align-items: center;
@@ -81,17 +63,40 @@ const currentPath = '/components/flair/logo';
 		align-items: flex-start;
 	}
 
-  .btn-container button {
-    cursor: pointer;
+	button.filter-btn {
+		padding: 0;
+		cursor: pointer;
 		background-color: transparent;
 		border: 0;
 		padding-bottom: 8px;
-  }
+	}
 
-  .btn-container button.active {
+	button.filter-btn:hover {
+		border-bottom: 2px solid rgb(228, 228, 228);
+	}
+
+  button.filter-btn.active {
     color: rgb(0, 0, 0);
 		border-bottom: 2px solid black;
   }
+
+	button#copy-code {
+		float: right;
+		padding: 5px 5px 2px 5px;
+		border: 0;
+		display: block;
+		border-radius: 2px;
+		background-color: transparent;
+	}
+
+	button#copy-code:hover {
+		background-color: rgb(236, 236, 236);
+		transition: .2s;
+	}
+
+	button.filter-btn#copy-code.active {
+
+	}
 
 </style>
 
@@ -102,7 +107,6 @@ const currentPath = '/components/flair/logo';
     var previewContents = document.getElementById('preview-contents');
     var codeContents = document.getElementById('code-contents');
 
-    // function to show preview and hide code
     function showPreview() {
       previewContents.style.display = 'flex';
       codeContents.style.display = 'none';
@@ -110,7 +114,6 @@ const currentPath = '/components/flair/logo';
       codeButton.classList.remove('active');
     }
 
-    // function to show code and hide preview
     function showCode() {
       codeContents.style.display = 'block';
       previewContents.style.display = 'none';
@@ -118,13 +121,9 @@ const currentPath = '/components/flair/logo';
       previewButton.classList.remove('active');
     }
 
-    // start with preview visible and button active
     showPreview();
 
-    // event listener for the preview button
     previewButton.addEventListener('click', showPreview);
-
-    // event listener for the code button
     codeButton.addEventListener('click', showCode);
   });
 </script>

@@ -1,0 +1,29 @@
+---
+interface Props {
+  text: string;
+  href: string;
+  style: string;
+}
+
+const { text, href, style } = Astro.props;
+---
+
+<a href={href} class={style}>{text}</a>
+
+<style>
+  a {
+		display: inline-block;
+	}
+
+  .secondary {
+    padding: 10px 20px;
+		background-color: rgb(249, 249, 249);
+		border: 1px solid rgb(224, 224, 224);
+		border-radius: 8px;
+  }
+
+  .secondary:hover {
+    background-color: rgb(241, 241, 241);
+    transition: .2s;
+  }
+</style>

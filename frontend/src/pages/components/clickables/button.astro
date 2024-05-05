@@ -1,14 +1,129 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Page from '../Page.astro';
+const currentPath = '/components/clickables/button';
 ---
 
 <Layout title="Component App">
-	<section>
-		<h2>Button</h2>
+	<section id="logo">
+		<div class="container">
+			<header>
+				<Breadcrumbs path={currentPath} />
+				<Page title="Button" text="Description about the component." />
+			</header>
+			<div class="btn-container">
+				<button class="filter-btn" id="preview">Preview</button>
+				<button class="filter-btn" id="code">Code</button>
+			</div>
+			<div class="contents" id="preview-contents">
+				<button id="">Button</button>
+			</div>
+			<div class="contents" id="code-contents">
+				<button id="copy-code">
+					<svg class="copy-btn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+					<svg class="copy-btn" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-check"><path d="m12 15 2 2 4-4"/><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+				</button>
+				code Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, rem et perspiciatis quia vitae sequi ducimus ullam asperiores modi esse natus atque adipisci perferendis, totam architecto! Temporibus voluptatibus totam consectetur.
+			</div>
+		</div>
 	</section>
 </Layout>
 
 <style>
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.contents {
+		border: 1px solid rgb(202, 202, 202);
+		border-radius: 4px;
+		padding: 20px;
+	}
 	
+	#preview-contents {
+    display: flex;
+		align-items: center;
+		justify-content: center;
+  }
+
+ 	/* hide by default */
+  #code-contents {
+    display: none;
+		background-color: rgb(247, 247, 247);
+  }
+
+	.btn-container {
+		border-bottom: 1px solid rgb(202, 202, 202);
+		margin-bottom: 10px;
+		display: flex;
+		gap: 20px;
+		align-items: flex-start;
+	}
+
+	button.filter-btn {
+		padding: 0;
+		cursor: pointer;
+		background-color: transparent;
+		border: 0;
+		padding-bottom: 8px;
+	}
+
+	button.filter-btn:hover {
+		border-bottom: 2px solid rgb(228, 228, 228);
+	}
+
+  button.filter-btn.active {
+    color: rgb(0, 0, 0);
+		border-bottom: 2px solid black;
+  }
+
+	button#copy-code {
+		float: right;
+		padding: 5px 5px 2px 5px;
+		border: 0;
+		display: block;
+		border-radius: 2px;
+		background-color: transparent;
+	}
+
+	button#copy-code:hover {
+		background-color: rgb(236, 236, 236);
+		transition: .2s;
+	}
+
+	button.filter-btn#copy-code.active {
+
+	}
+
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var previewButton = document.getElementById('preview');
+    var codeButton = document.getElementById('code');
+    var previewContents = document.getElementById('preview-contents');
+    var codeContents = document.getElementById('code-contents');
+
+    function showPreview() {
+      previewContents.style.display = 'flex';
+      codeContents.style.display = 'none';
+      previewButton.classList.add('active');
+      codeButton.classList.remove('active');
+    }
+
+    function showCode() {
+      codeContents.style.display = 'block';
+      previewContents.style.display = 'none';
+      codeButton.classList.add('active');
+      previewButton.classList.remove('active');
+    }
+
+    showPreview();
+
+    previewButton.addEventListener('click', showPreview);
+    codeButton.addEventListener('click', showCode);
+  });
+</script>

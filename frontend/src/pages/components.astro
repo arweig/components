@@ -1,0 +1,74 @@
+---
+import Link from '../components/Link.astro';
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="Component App">
+	<section>
+		<h2>Components</h2>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, corrupti non ducimus et natus odio voluptatem hic sunt dicta consectetur, eveniet facere minima deserunt cum temporibus. Odio adipisci fugiat obcaecati?</p>
+		
+		<h4>Layouts</h4>
+		<ul>
+			<li><Link text="Introduction" href="/getting-started/introduction" style="secondary" /></li>
+			<li><Link text="Installation" href="/getting-started/installation" style="secondary" /></li>
+			<li><Link text="Modes" href="/getting-started/modes" style="secondary" /></li>
+		</ul>
+
+		<h4>Clickables</h4>
+		<ul>
+			<li><Link text="Introduction" href="/getting-started/introduction" style="secondary" /></li>
+			<li><Link text="Installation" href="/getting-started/installation" style="secondary" /></li>
+			<li><Link text="Usage" href="/getting-started/usage" style="secondary" /></li>
+			<li><Link text="Themes" href="/getting-started/themes" style="secondary" /></li>
+			<li><Link text="Modes" href="/getting-started/modes" style="secondary" /></li>
+		</ul>
+
+		<h4>Flair</h4>
+		<ul>
+			<li><Link text="Introduction" href="/getting-started/introduction" style="secondary" /></li>
+			<li><Link text="Installation" href="/getting-started/installation" style="secondary" /></li>
+			<li><Link text="Usage" href="/getting-started/usage" style="secondary" /></li>
+			<li><Link text="Themes" href="/getting-started/themes" style="secondary" /></li>
+			<li><Link text="Modes" href="/getting-started/modes" style="secondary" /></li>
+		</ul>
+
+		<h4>Cards</h4>
+		<ul>
+			<li><Link text="Introduction" href="/getting-started/introduction" style="secondary" /></li>
+			<li><Link text="Installation" href="/getting-started/installation" style="secondary" /></li>
+			<li><Link text="Usage" href="/getting-started/usage" style="secondary" /></li>
+		</ul>
+
+		<h4>Tiles</h4>
+		<ul>
+			<li><Link text="Usage" href="/getting-started/usage" style="secondary" /></li>
+			<li><Link text="Themes" href="/getting-started/themes" style="secondary" /></li>
+			<li><Link text="Modes" href="/getting-started/modes" style="secondary" /></li>
+		</ul>
+	</section>
+</Layout>
+
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	
+	ul {
+		list-style-type: none;
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+	}
+
+	a {
+		padding: 10px 20px;
+		background-color: rgb(244, 244, 244);
+		border: 1px solid grey;
+		border-radius: 8px;
+		display: inline-block;
+	}
+</style>

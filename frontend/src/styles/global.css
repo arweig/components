@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 	scroll-behavior: smooth;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -46,6 +49,15 @@ main {
 
 .no-show {
   display: none;
+}
+
+p {
+  max-width: 900px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 @media screen and (max-width: 800px) {

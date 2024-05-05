@@ -1,9 +1,9 @@
 <nav id="main-nav">
-  <p>Component App</p>
+  <p><a href="/">Component App</a></p>
   <ul>
-    <li class="nav-links"><a href="/">Getting Started</a></li>
-    <li class="nav-links"><a href="/components/button">Components</a></li>
-    <li class="nav-links"><a href="">Link</a></li>
+    <li class="nav-links"><a href="/getting-started">Docs</a></li>
+    <li class="nav-links"><a href="/components">Components</a></li>
+    <li class="nav-links"><a href="/design-tokens">Design Tokens</a></li>
     <li class="nav-links"><a href="">Link</a></li>
     <li id="nav-dropdown-toggle"><button>X</a></button>
   </ul>
@@ -11,9 +11,9 @@
   <!-- Overlay Menu -->
   <div id="nav-overlay" style="display: none;">
     <ul>
-      <li><a href="/">Getting Started</a></li>
-      <li><a href="/components/button">Components</a></li>
-      <li><a href="">Link</a></li>
+      <li><a href="/getting-started">Getting Started</a></li>
+      <li><a href="/components">Components</a></li>
+      <li><a href="/design-tokens">Design Tokens</a></li>
       <li><a href="">Link</a></li>
     </ul>
   </div>
@@ -40,29 +40,32 @@
 
   button {
     display: none;
+    font-size: 10px;
   }
 
   #nav-overlay {
     position: absolute;
-    width: 100%; /* Take the full width of the navbar */
-    display: none; /* Hidden by default */
+    width: 100%;
+    display: none;
     background-color: white;
     box-shadow: 0 10px 16px rgba(0, 0, 0, 0.05);
-    z-index: 1000; /* High z-index to overlay on top of other content */
-    top: 100%; /* Directly below the navbar */
+    z-index: 1000;
+    top: 100%;
     left: 0;
     padding: 30px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
   }
 
   #nav-overlay ul {
-    flex-direction: column; /* Stack links vertically */
-    width: 100%; /* Full width */
-    margin: 0; /* Reset margin */
-    padding: 10px 0; /* Padding on top and bottom */
+    flex-direction: column; 
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
   }
 
   #nav-overlay li {
-    margin-bottom: 10px; /* Space between links */
+    margin-bottom: 10px;
   }
 
   #nav-overlay li:last-child {
@@ -74,7 +77,7 @@
       display: none;
     }
     button {
-      display: block; /* Show button on small screens */
+      display: block;
     }
   }
 </style>
